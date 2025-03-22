@@ -1,15 +1,79 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+class Queue{
+    int front;
+    int rear;
+    int size;
+    int []arr;
+Queue(int capacity)
+{
+    front = rear = -1;
+    size = capacity;
+    arr = new int[size];
+}
+
+boolean isFull()
+{
+    return rear == size-1;
+}
+boolean isEmpty(){
+    return front == -1 || front>rear;
+}
+
+
+void pushRear(int data)
+{
+
+    if(isFull())
+    {
+        System.out.println("queue is full");
+        return;
+    }
+    rear++;
+    arr[rear] = data;
+    if(front == -1)
+    {
+        front = 0;
+    }
+}
+void popFront()
+{
+    if(isEmpty())
+    {
+        System.out.println("queue is empty");
+        return;
+    }
+    front++;
+    if(front>rear)  //check
+    {
+        front = rear = -1;
+    }
+
+}
+ void print()
+ {
+     int i;
+     for( i = front;i<=rear;i++)
+     {
+         System.out.print(arr[i] + " ");
+
+     }
+     System.out.println();
+ }
+
+
+}
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
-
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        Queue q1 = new Queue(5);
+        //q1.popFront();
+        q1.pushRear(1);
+        q1.pushRear(2);
+        q1.pushRear(3);
+        q1.pushRear(4);
+        q1.pushRear(5);
+        //q1.pushRear(6);
+        q1.print();
+        q1.popFront();
+        q1.popFront();
+        q1.print();
     }
 }
