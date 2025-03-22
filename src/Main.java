@@ -15,7 +15,7 @@ boolean isFull()
     return rear == size-1;
 }
 boolean isEmpty(){
-    return front == -1 || front>rear;
+    return front == -1;
 }
 
 
